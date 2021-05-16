@@ -25,9 +25,8 @@ namespace BlackOpsMapPicker
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("BLOPSGAMES")))
             {
-                 var output = connection.Query<Map>($"select * from Maps").ToList();
-
-                
+                 var output = connection.Query<Map>($"select GameId, MapId, MapName from Maps").ToList();
+             
                 return output;
             }
         }
