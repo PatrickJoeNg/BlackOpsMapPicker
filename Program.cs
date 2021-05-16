@@ -23,45 +23,51 @@ namespace BlackOpsMapPicker
 
             Random random = new Random();
 
+            Console.WriteLine("-----Games List-----");   
             foreach (var g in gameList)
             {
-                Console.WriteLine(g.FullInfo);
+                Console.WriteLine($"\n{ g.FullInfo }");
             }
 
             while (true)
             {
-                Console.WriteLine("Which game are you going to play? (enter anything else to quit)");
+                Console.WriteLine("\nWhich game are you going to play? (Choose one of the numbers above)\n(enter anything else to quit)");
                 string input = Console.ReadLine();
 
-                int.TryParse(input, out int value);
-
-                if (value == gameList[value - 1].GameId)
+                if (int.TryParse(input, out int value))
                 {
-                    Console.WriteLine($"Playing { gameList[value - 1].GameName }");
-                    Console.WriteLine($"\nChoosing random zombie map to play");
+                    // prevent input higher than 3
+                    if (value >= 4)
+                    {
+                        Console.WriteLine("Please input 1, 2 or 3");
+                    }
+                    else
+                    {
+                        if (value == gameList[value - 1].GameId)
+                        {
+                            Console.WriteLine($"\nPlaying { gameList[value - 1].GameName }");
+                            Console.WriteLine($"\nChoosing random zombie map to play");
 
-                    if (gameList[value - 1].GameId == mapList[0].GameId)
-                    {
-                        int mapValue = random.Next(1, 15);
-                        Console.WriteLine($"Playing on { mapList[mapValue].MapName }");
-                    }
-                    if (gameList[value - 1].GameId == mapList[1].GameId)
-                    {
-                        int mapValue = random.Next(1, 9);
-                        Console.WriteLine("Play BLOPs 4 map");
-                    }
-                    if (gameList[value - 1].GameId == mapList[2].GameId)
-                    {
-                        int mapValue = random.Next(1, 3);
-                        Console.WriteLine("Play Cold War map");
+                            if (gameList[value - 1].GameId == 1)
+                            {
+                                int mapValue = random.Next(1, 15);
+                                Console.WriteLine($"Playing on { mapList[mapValue].MapName }");
+                            }
+                            if (gameList[value - 1].GameId == 2)
+                            {
+                                int mapValue = random.Next(15, 22);
+                                Console.WriteLine($"Playing on { mapList[mapValue].MapName }");
+                            }
+                            if (gameList[value - 1].GameId == 3)
+                            {
+                                int mapValue = random.Next(22, 24);
+                                Console.WriteLine($"Playing on { mapList[mapValue].MapName }");
+                            }
+                        }
                     }
                 }
+                else return;
             }
-            Console.WriteLine("Exiting Application");
-            Console.ReadLine();
-
-
-
         }
     }
 }
