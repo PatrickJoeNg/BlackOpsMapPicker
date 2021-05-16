@@ -10,39 +10,24 @@ namespace BlackOpsMapPicker
     {
         static void Main(string[] args)
         {
-            List<Game> game = new List<Game>();
+            // Initalize new lists
+            List<Game> gameList = new List<Game>();
+            List<Map> mapList = new List<Map>();
 
-            //Random random = new Random();
-
-            //string[] blopGames = new string[3];
-
-            //blopGames[0] = "Black Ops 4";
-
-            //blopGames[1] = "Black Ops Cold War";
-
-            //blopGames[2] = "Black Op 3";     
-
-            //while (true)
-            //{
-
-            //    Console.WriteLine("Which Blops Game (g for random game, q to exit)\n");
-            //    char readInput = Console.ReadKey(true).KeyChar;
-
-            //    if (readInput == 'g')
-            //    {
-            //        int i = random.Next(0, 3);
-            //        Console.WriteLine(blopGames[i].ToString());
-            //    }
-            //    if (readInput == 'q') return;
-            //}
-
+            // database access
             DataAccess db = new DataAccess();
 
-            game = db.GetGame("");
+            gameList = db.GetGame();
+            mapList = db.GetMaps();
 
-            Console.WriteLine("FullInfo");
+            foreach(var g in gameList)
+            {
+                Console.WriteLine(g.FullInfo);
+            }
+            
+            Console.WriteLine("Press enter to exit");
 
-            Console.WriteLine(game);
+            Console.ReadLine();
         }
     }
 }

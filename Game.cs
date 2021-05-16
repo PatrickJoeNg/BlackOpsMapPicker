@@ -8,7 +8,8 @@ namespace BlackOpsMapPicker
 {
     public class Game
     {
-        public int id { get; set; }
+        public int id { get; }
+        public int GameId { get; set; }
         public string GameName { get; set; }
 
         public string FullInfo
@@ -16,7 +17,7 @@ namespace BlackOpsMapPicker
             get
             {
                 // Black Ops 3
-                return $"{ GameName }";
+                return $"{ GameId } { GameName }";
             }
         }
     }

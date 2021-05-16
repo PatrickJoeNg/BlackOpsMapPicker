@@ -11,11 +11,24 @@ namespace BlackOpsMapPicker
 {
     public class DataAccess
     {
-        public List<Game> GetGame(string gameName)
+        public List<Game> GetGame()
+        {          
+            using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("BLOPSGAMES")))
+            {
+                var output = connection.Query<Game>($"select * from Games").ToList();
+
+                return output;
+            }
+        }
+
+        public List<Map> GetMaps()
         {
             using (IDbConnection connection = new System.Data.SqlClient.SqlConnection(Helper.CnnVal("BLOPSGAMES")))
             {
-                return connection.Query<Game>("select * from Games where GameName = '{ gameName }'").ToList();
+                 var output = connection.Query<Map>($"select * from Maps").ToList();
+
+                
+                return output;
             }
         }
     }
