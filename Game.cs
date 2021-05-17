@@ -8,11 +8,23 @@ namespace BlackOpsMapPicker
 {
     public class Game
     {
-        public int Id { get; }
-        public int GameId { get; set; }
-        public string GameName { get; set; }
+        private int Id { get; }
+        private int gameId;
+        private string gameName;
 
+        public string GameName { get { return gameName; } set { gameName = value; } }
 
+        public int GameId
+        {
+            get
+            {
+                return gameId;
+            }
+            set
+            {
+                gameId = value;
+            }
+        }
         public string FullInfo
         {
             get

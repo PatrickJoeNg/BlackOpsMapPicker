@@ -10,7 +10,11 @@ namespace BlackOpsMapPicker
     {
         public int Id { get; }
         public int MapId { get; set; }
-        public int GameId { get; set; }
-        public string MapName { get; set; }
+        private int gameId;
+
+        private string mapName;
+        public string MapName { get { return mapName; } set { mapName = value; } }
+
+
     }
 }
