@@ -8,6 +8,7 @@ namespace BlackOpsMapPicker
 {
     class Program
     {
+        static Random random = new Random();
         static void Main(string[] args)
         {
             // Initalize new lists
@@ -21,17 +22,19 @@ namespace BlackOpsMapPicker
             gameList = db.GetGame();
             mapList = db.GetMaps();
 
-            Random random = new Random();
-
             Console.WriteLine("-----Games List-----");   
             foreach (var g in gameList)
             {
                 Console.WriteLine($"\n{ g.FullInfo }");
             }
 
+            /*****************************/
+            /* Prompt user to pick a game*/
+            /*****************************/
+
             while (true)
             {
-                Console.WriteLine("\nWhich game are you going to play? (Choose one of the numbers above)\n(enter anything else to quit)");
+                Console.WriteLine("\nPick a game. (Choose one of the numbers above)\n(enter anything else to quit)");
                 string input = Console.ReadLine();
 
                 if (int.TryParse(input, out int value))

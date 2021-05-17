@@ -30,7 +30,7 @@ namespace BlackOpsMapPicker
             get
             {
                 // Black Ops 3
-                return $"{ GameId } { GameName }";
+                return $"{ GameId }. { GameName }";
             }
         }
     }
